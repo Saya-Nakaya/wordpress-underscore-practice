@@ -61,6 +61,24 @@ a:active {
   }
 }
 
+.menu-toggle {
+  display: none;
+}
+@media (max-width: 599px) {
+  .menu-toggle {
+    display: block;
+    padding: 8px 16px;
+    background-color: #fff;
+    border-radius: 24px;
+    border: 1px solid #000000;
+    cursor: pointer;
+  }
+  .menu-toggle:hover {
+    background-color: #000000;
+    color: #fff;
+  }
+}
+
 .site-main {
   display: flex;
   flex-direction: column;
@@ -152,4 +170,17 @@ a:active {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.wp-block-search__button {
+  background-color: #fff;
+  border-radius: 24px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+.wp-block-search__button:hover {
+  background-color: #000;
+  color: #fff;
 }/*# sourceMappingURL=style.css.map */
