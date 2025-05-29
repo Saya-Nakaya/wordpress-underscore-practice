@@ -1,0 +1,45 @@
+/* フォントサイズ */
+$font-family-base: "Noto Sans JP", sans-serif;
+$font-size-h1: 40px;
+$sp-font-h1: 32px;
+$font-size-h2: 24px;
+$sp-font-h2: 16px;
+$font-size-p: 16px;
+$sp-font-p: 14px;
+
+.site-title{
+    font-size: $font-size-h1;
+    font-weight: bold;
+
+    @media (max-width: 1023px) {
+        font-size: $sp-font-h1;
+    }
+}
+
+.entry-title {
+    font-size: $font-size-h2;
+    font-weight: bold;
+}
+
+.posted-on {
+    font-size: $font-size-p;
+
+    @media (max-width: 1023px) {
+        font-size: $sp-font-p;
+    }
+}
+
+a {
+    color: #000000;
+
+    // 訪問済みのリンク
+    &:visited {
+        color: #3f42ff;
+    }
+
+    // クリックした時のリンク
+    &:active {
+        color: #008120;
+    }
+}
+

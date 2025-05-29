@@ -1,0 +1,25 @@
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 40px;
+
+    @media (max-width: 1023px) {
+        padding: 24px 24px;
+    }
+
+    .main-navigation {
+        width: auto;
+    }
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+
+    @media (max-width: 1023px) {
+        gap: 16px;
+    }
+}
