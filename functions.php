@@ -176,3 +176,9 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// cssの読み込み
+function my_enqueue_files() {
+	wp_enqueue_style('destyle', get_template_directory_uri() . '/styles/destyle.css');
+	wp_enqueue_style('style', get_template_directory_uri() . '/styles/style.css');
+}
+add_action('wp_enqueue_scripts', 'my_enqueue_files');

@@ -1,0 +1,20 @@
+#comment{
+    background-color: #fff;
+}
+
+//  nav-links
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.post-navigation{
+    width: 100%;
+    .nav-next {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
