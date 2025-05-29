@@ -65,8 +65,7 @@ get_header();
             // 記事がある場合の処理
             if ($query->have_posts()) :
                 // 記事のループ開始
-                while ($query->have_posts()) : $query->the_post();
-            ?>
+                while ($query->have_posts()) : $query->the_post(); ?>
                 <!-- 1つの記事を表示する部分 -->
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <!-- 記事の最初の部分（タイトルと日付を表示） -->
@@ -88,9 +87,7 @@ get_header();
                         <?php the_excerpt(); ?>
                     </div>
                 </article>
-            <?php
-                endwhile;
-                ?>
+            <?php endwhile; ?>
                 
                 <!-- 
                     ##################################
