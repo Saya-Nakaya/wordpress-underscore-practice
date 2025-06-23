@@ -1,5 +1,9 @@
 @charset "UTF-8";
 /* フォントサイズ */
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
 .site-title {
   font-size: 40px;
   font-weight: bold;
@@ -42,12 +46,12 @@ a:active {
 }
 @media (max-width: 1023px) {
   .site-header {
-    padding: 24px 24px;
+    padding: 24px;
   }
 }
 @media (max-width: 599px) {
   .site-header {
-    padding: 16px 16px 0;
+    padding: 16px;
   }
 }
 .site-header .main-navigation {
@@ -55,8 +59,14 @@ a:active {
 }
 @media (max-width: 599px) {
   .site-header .main-navigation {
-    padding: 16px 8px;
+    padding-top: 8px;
   }
+}
+
+.site-branding {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 599px) {
@@ -95,17 +105,18 @@ a:active {
 }
 
 .site-main {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   background-color: rgba(213, 222, 228, 0.8509803922);
   padding: 24px 40px;
+  margin: 0 auto;
 }
 @media (max-width: 1023px) {
   .site-main {
-    padding: 24px 40px;
-    align-items: center;
+    padding: 24px;
   }
 }
 
@@ -140,8 +151,8 @@ a:active {
   justify-content: center;
   align-items: flex-start;
   background-color: #fff;
-  padding: 24px 40px;
-  border-radius: 24px;
+  padding: 30px 40px;
+  border-radius: 30px;
 }
 .post:nth-child(1) {
   margin-top: 24px;
@@ -149,6 +160,7 @@ a:active {
 @media (max-width: 1023px) {
   .post {
     width: 100%;
+    gap: 8px;
   }
 }
 
@@ -164,12 +176,108 @@ a:active {
   width: 100%;
   margin: 0 auto;
 }
+@media (max-width: 599px) {
+  .widget-area {
+    padding: 24px;
+  }
+}
 .widget-area .widget_block {
   width: 100%;
 }
 
+.entry-meta {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+}
+@media (max-width: 599px) {
+  .entry-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.entry-footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+}
+@media (max-width: 599px) {
+  .entry-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 #comment {
+  max-width: 475px;
+  width: 100%;
   background-color: #fff;
+  resize: none;
+  border-radius: 30px;
+  padding: 24px;
+}
+@media (max-width: 599px) {
+  #comment {
+    padding: 12px;
+  }
+}
+
+#respond {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  gap: 16px;
+}
+.comment-form .comment-form-author, .comment-form .comment-form-email, .comment-form .comment-form-url {
+  max-width: 475px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+.comment-form #author, .comment-form #email, .comment-form #url {
+  padding: 12px;
+  width: 100%;
+  border-radius: 20px;
+  background-color: #fff;
+}
+@media (max-width: 599px) {
+  .comment-form {
+    gap: 8px;
+  }
+}
+
+.form-submit {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 24px;
+  border-radius: 30px;
+}
+@media (max-width: 599px) {
+  .form-submit {
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+  }
 }
 
 .nav-links {
@@ -179,13 +287,23 @@ a:active {
   width: 100%;
 }
 
-.post-navigation {
+.site-main .post-navigation {
   width: 100%;
+  margin: 0 0 8px;
 }
-.post-navigation .nav-next {
+.site-main .post-navigation .nav-next {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin: 24px 0;
 }
 
 .wp-block-search__button {
@@ -243,4 +361,15 @@ a:active {
     height: 56px;
     font-size: 18px;
   }
+}
+
+/*
+############
+## common ##
+############
+*/
+html {
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
 }/*# sourceMappingURL=style.css.map */

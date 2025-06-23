@@ -6,8 +6,8 @@
     justify-content: center;
     align-items: flex-start;
     background-color: #fff;
-    padding: 24px 40px;
-    border-radius: 24px;
+    padding: 30px 40px;
+    border-radius: 30px;
 
 
     &:nth-child(1) {
@@ -16,6 +16,7 @@
 
     @media (max-width: 1023px) {
         width: 100%;
+        gap: 8px;
     }
 }
 
@@ -32,9 +33,41 @@
     width: 100%;
     margin: 0 auto;
 
+    @media (max-width: 599px) {
+        padding: 24px;
+    }
+    
     .widget_block {
         width: 100%;
         
+    }
+}
+
+// 投稿メタ情報
+.entry-meta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+
+    @media (max-width: 599px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+// 投稿フッター
+.entry-footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+
+    @media (max-width: 599px) {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 

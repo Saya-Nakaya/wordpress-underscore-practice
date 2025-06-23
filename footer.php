@@ -12,12 +12,9 @@
 ?>
 
 	<footer id="colophon" class="site-footer">
-
+		<button class="scroll-to-top" aria-label="トップに戻る"></button>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
-
-<!-- トップに戻るボタン -->
-<button class="scroll-to-top" aria-label="トップに戻る"></button>
 
 <?php wp_footer(); ?>
 

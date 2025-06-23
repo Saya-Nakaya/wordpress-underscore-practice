@@ -183,3 +183,17 @@ function my_enqueue_files() {
 	wp_enqueue_script('scroll-to-top', get_template_directory_uri() . '/js/scroll-to-top.js', array(), _S_VERSION, true);
 }
 add_action('wp_enqueue_scripts', 'my_enqueue_files');
+
+// コメントフォームのフィールドをカスタマイズ
+function custom_comment_form_fields($fields) {
+	// 「サイト」のフィールドを削除
+	if (isset($fields['url'])) {
+		unset($fields['url']);
+	}
+
+	if (isset($fields['cookies'])) {
+		unset($fields['cookies']);
+	}
+	return $fields;
+}
+add_filter('comment_form_default_fields', 'custom_comment_form_fields');

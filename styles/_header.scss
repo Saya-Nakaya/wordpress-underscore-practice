@@ -5,20 +5,26 @@
     padding: 24px 40px;
 
     @media (max-width: 1023px) {
-        padding: 24px 24px;
+        padding: 24px;
     }
 
     @media (max-width: 599px) {
-        padding: 16px 16px 0;
+        padding: 16px;
     }
 
     .main-navigation {
         width: auto;
 
         @media (max-width: 599px) {
-            padding: 16px 8px;
+            padding-top: 8px;
         }
     }
+}
+
+.site-branding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 599px) {
