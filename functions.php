@@ -180,5 +180,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 function my_enqueue_files() {
 	wp_enqueue_style('destyle', get_template_directory_uri() . '/styles/destyle.css');
 	wp_enqueue_style('style', get_template_directory_uri() . '/styles/style.css');
+	wp_enqueue_script('scroll-to-top', get_template_directory_uri() . '/js/scroll-to-top.js', array(), _S_VERSION, true);
 }
 add_action('wp_enqueue_scripts', 'my_enqueue_files');

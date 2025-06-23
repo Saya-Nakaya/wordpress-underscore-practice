@@ -14,6 +14,7 @@ get_header();
 
 		<?php if ( have_posts() ) : ?>
 
+			<!-- 検索結果ページのヘッダー部分 -->
 			<header class="page-header">
 				<h1 class="page-title">
 					<?php

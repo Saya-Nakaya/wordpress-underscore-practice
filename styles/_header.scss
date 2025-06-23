@@ -8,8 +8,22 @@
         padding: 24px 24px;
     }
 
+    @media (max-width: 599px) {
+        padding: 16px 16px 0;
+    }
+
     .main-navigation {
         width: auto;
+
+        @media (max-width: 599px) {
+            padding: 16px 8px;
+        }
+    }
+}
+
+@media (max-width: 599px) {
+    .menu {
+        padding: 8px 8px 0;
     }
 }
 

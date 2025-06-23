@@ -16,8 +16,8 @@
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php
-			test_posted_on();
-			test_posted_by();
+			test_posted_on(); // 「Posted on [日付]」を表示します
+			test_posted_by(); // 「by [投稿者名]」を表示します
 			?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>

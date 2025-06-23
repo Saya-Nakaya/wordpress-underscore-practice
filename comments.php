@@ -23,21 +23,25 @@ if ( post_password_required() ) {
 <div id="comments" class="comments-area">
 
 	<?php
-	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
 		?>
 		<h2 class="comments-title">
 			<?php
+			// 現在の投稿のコメント数を取得
 			$test_comment_count = get_comments_number();
+			
+			// コメント数に応じて適切なメッセージを表示
 			if ( '1' === $test_comment_count ) {
+				// コメントが1件の場合：「○○についての1つの考え」
 				printf(
-					/* translators: 1: title. */
+					/* 翻訳者: 1: タイトル. */
 					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'test' ),
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			} else {
+				// コメントが複数件の場合：「○○についての○件の考え」
 				printf( 
-					/* translators: 1: comment count number, 2: title. */
+					/* 翻訳者: 1: コメント数, 2: タイトル. */
 					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $test_comment_count, 'comments title', 'test' ) ),
 					number_format_i18n( $test_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
