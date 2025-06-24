@@ -1,11 +1,11 @@
 <?php
 /**
- * The main template file
+ * メインテンプレートファイル
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
+ * これはWordPressテーマで最も汎用的なテンプレートファイルです。
+ * テーマに必要な2つのファイルのうちの1つです（もう1つはstyle.css）。
+ * より具体的なテンプレートがクエリに一致しない場合に使用されます。
+ * 例：home.phpファイルが存在しない場合のホームページの表示に使用されます。
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -28,14 +28,14 @@ get_header();
 				<?php
 			endif;
 
-			/* Start the Loop */
+			/* 投稿ループの開始 */
 			while ( have_posts() ) :
 				the_post();
 
 				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+				 * 投稿タイプ固有のコンテンツテンプレートを読み込みます。
+				 * 子テーマでこれを上書きしたい場合は、content-___.phpという名前のファイル
+				 * （___は投稿タイプ名）を作成すると、そちらが代わりに使用されます。
 				 */
 				get_template_part( 'template-parts/content', get_post_type() );
 

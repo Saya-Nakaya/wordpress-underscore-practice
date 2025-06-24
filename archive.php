@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying archive pages
+ * アーカイブページを表示するためのテンプレート
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -22,14 +22,14 @@ get_header();
 			</header><!-- .page-header -->
 
 			<?php
-			/* Start the Loop */
+			/* 投稿ループの開始 */
 			while ( have_posts() ) :
 				the_post();
 
 				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+				 * 投稿タイプ固有のコンテンツテンプレートを読み込み
+				 * 子テーマでこれを上書きしたい場合は、content-___.phpという名前のファイル
+				 * （___は投稿タイプ名）を作成すると、そちらが使用されます
 				 */
 				get_template_part( 'template-parts/content', get_post_type() );
 

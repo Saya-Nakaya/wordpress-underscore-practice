@@ -176,3 +176,102 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// cssの読み込み
+function my_enqueue_files() {
+	wp_enqueue_style('destyle', get_template_directory_uri() . '/styles/destyle.css');
+	wp_enqueue_style('style', get_template_directory_uri() . '/styles/style.css');
+	wp_enqueue_script('scroll-to-top', get_template_directory_uri() . '/js/scroll-to-top.js', array(), _S_VERSION, true);
+}
+add_action('wp_enqueue_scripts', 'my_enqueue_files');
+
+/*
+###############
+## ここから追加 ##
+###############
+*/
+
+// コメントフォームのフィールドをカスタマイズ
+function my_remove_comment_logged_in_text($args) {
+    $args['logged_in_as'] = '';
+    return $args;
+}
+add_filter('comment_form_defaults', 'my_remove_comment_logged_in_text');
+
+function my_customize_comment_form_texts($args) {
+    $args['title_reply'] = 'コメントを残す'; // フォームのタイトル
+    $args['comment_field'] = '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>';
+    return $args;
+}
+add_filter('comment_form_defaults', 'my_customize_comment_form_texts');
+
+/**
+ * 投稿内容の文字数制限関数
+ * ホーム画面と検索画面で100文字に制限
+ */
+function limit_post_content($content, $limit = 100) {
+    // HTMLタグを除去してプレーンテキストに変換
+    $plain_text = wp_strip_all_tags($content);
+    
+    // 文字数を制限
+    if (mb_strlen($plain_text) > $limit) {
+        $limited_text = mb_substr($plain_text, 0, $limit);
+        return $limited_text . '...';
+    }
+    
+    return $plain_text;
+}
+
+/**
+ * ホーム画面と検索画面でのみ文字数制限を適用
+ */
+function custom_the_content($content) {
+    // 単一投稿ページでは全文表示
+    if (is_single()) {
+        return $content;
+    }
+    
+    // ホーム画面または検索画面の場合、文字数制限を適用
+    if (is_home() || is_search() || is_page('articles')) {
+        return limit_post_content($content, 100);
+    }
+    
+    return $content;
+}
+add_filter('the_content', 'custom_the_content');
+
+// コメントの日時表示をカスタマイズ
+function custom_comment_date_format($comment_date, $comment) {
+    return get_comment_time('Y/m/d H:i', false, true);
+}
+add_filter('get_comment_date', 'custom_comment_date_format', 10, 2);
+
+// 日時表示の統一設定
+function custom_date_format($date_format) {
+    return 'Y/m/d H:i';
+}
+add_filter('date_format', 'custom_date_format');
+
+// 投稿日時の表示形式を統一
+function custom_post_date_format($date) {
+    return esc_html(get_the_date('Y/m/d H:i'));
+}
+
+// 更新日時の表示形式を統一
+function custom_modified_date_format($date) {
+    return esc_html(get_the_modified_date('Y/m/d H:i'));
+}
+
+// コメントリストのカスタムコールバック関数
+function my_simple_comment_callback($comment, $args, $depth) {
+    ?>
+    <li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+        <div class="comment-body">
+            <div class="comment-meta">
+                <span class="comment-author"><?php echo esc_html(get_comment_author()); ?></span>
+                <span class="comment-date"><?php echo get_comment_time('Y/m/d H:i'); ?></span>
+            </div>
+            <div class="comment-content"><?php comment_text(); ?></div>
+        </div>
+    </li>
+    <?php
+}

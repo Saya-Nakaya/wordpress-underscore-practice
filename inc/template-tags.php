@@ -20,14 +20,14 @@ if ( ! function_exists( 'test_posted_on' ) ) :
 		$time_string = sprintf(
 			$time_string,
 			esc_attr( get_the_date( DATE_W3C ) ),
-			esc_html( get_the_date() ),
+			esc_html( get_the_date( 'Y/m/d H:i' ) ),
 			esc_attr( get_the_modified_date( DATE_W3C ) ),
-			esc_html( get_the_modified_date() )
+			esc_html( get_the_modified_date( 'Y/m/d H:i' ) )
 		);
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', 'test' ),
+			'%s',
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
@@ -63,7 +63,7 @@ if ( ! function_exists( 'test_entry_footer' ) ) :
 			$categories_list = get_the_category_list( esc_html__( ', ', 'test' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'test' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf( '<span class="cat-links">' . esc_html__( 'カテゴリー: %1$s', 'test' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
 			/* translators: used between list items, there is a space after the comma */
@@ -80,7 +80,7 @@ if ( ! function_exists( 'test_entry_footer' ) ) :
 				sprintf(
 					wp_kses(
 						/* translators: %s: post title */
-						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'test' ),
+						__( 'まだコメントはありません。<span class="screen-reader-text"> on %s</span>', 'test' ),
 						array(
 							'span' => array(
 								'class' => array(),
@@ -92,23 +92,6 @@ if ( ! function_exists( 'test_entry_footer' ) ) :
 			);
 			echo '</span>';
 		}
-
-		edit_post_link(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'test' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
 	}
 endif;
 

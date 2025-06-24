@@ -1,0 +1,138 @@
+/*
+##########################
+## 投稿メインコンテンツのスタイル
+##########################
+*/
+
+// 投稿コンテンツのスタイル
+.post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 30px;
+
+
+    &:nth-child(1) {
+        margin-top: 24px;
+    }
+
+    @media (max-width: 1023px) {
+        width: 100%;
+        gap: 8px;
+        padding: 24px;
+    }
+}
+
+// コメントエリアのスタイル
+.widget-area {
+    background-color: #fff;
+
+    .widget-area-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 24px 40px;
+        border-radius: 24px;
+        max-width: 440px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 599px) {
+        .widget-area-inner {
+            padding: 24px;
+        }
+    }
+    
+    .widget_block {
+        width: 100%;
+        
+    }
+}
+
+// 投稿メタ情報
+.entry-meta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+
+    @media (max-width: 599px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+//  投稿画像　
+.size-full {
+    max-width: 1040px;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 16px 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// 投稿フッター
+.entry-footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+
+    @media (max-width: 599px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+// 「続きを読む」リンクのスタイル
+.read-more {
+    margin: 1.5em 0;
+    
+    a {
+        display: inline-block;
+        background-color: $color-primary;
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        
+        &:hover {
+            background-color: $color-secondary;
+            text-decoration: none;
+        }
+        
+        &:focus {
+            outline: 2px solid $color-primary;
+            outline-offset: 2px;
+        }
+    }
+}
+
+// 検索結果ページの抜粋スタイル
+.entry-summary {
+    .entry-excerpt {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+        margin: 16px 0;
+    }
+}
+
