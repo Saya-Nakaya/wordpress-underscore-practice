@@ -24,6 +24,7 @@ get_header();
 				</h1>
 			</header><!-- .page-header -->
 
+			<!-- 検索結果ページのメイン部分 -->
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :

@@ -29,7 +29,7 @@
 			<div class="entry-meta">
 				<?php
 				test_posted_on();  // 投稿日を表示
-				test_posted_by();  // 投稿者を表示
+				// test_posted_by();  // 投稿者を表示（コメントアウト）
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
@@ -40,31 +40,38 @@
 	<!-- 記事の本文を表示する部分 -->
 	<div class="entry-content">
 		<?php
-		// 記事の本文を表示
-		the_content(
-			sprintf(
-				wp_kses(
-					//  %s の部分には記事のタイトルが入る
-					// このテキストは画面読み上げソフトでしか見えない部分
-					// 記事を読み続けるためのリンクテキストとして使われる
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'test' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
+		// 単一投稿ページでは全文表示、それ以外では文字数制限を適用
+		if ( is_singular() ) :
+			// 記事の本文を表示
+			the_content(
+				sprintf(
+					wp_kses(
+						//  %s の部分には記事のタイトルが入る
+						// このテキストは画面読み上げソフトでしか見えない部分
+						// 記事を読み続けるためのリンクテキストとして使われる
+						__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'test' ),
+						array(
+							'span' => array(
+								'class' => array(),
+							),
+						)
+					),
+					wp_kses_post( get_the_title() )
+				)
+			);
 
-		// 記事が複数ページに分かれている場合、ページ番号のリンクを表示
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'test' ),
-				'after'  => '</div>',
-			)
-		);
+			// 記事が複数ページに分かれている場合、ページ番号のリンクを表示
+			wp_link_pages(
+				array(
+					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'test' ),
+					'after'  => '</div>',
+				)
+			);
+		else :
+			// 一覧ページでは文字数制限を適用
+			echo '<p class="entry-excerpt">' . limit_post_content(get_the_content(), 100) . '</p>';
+			echo '<p class="read-more"><a href="' . esc_url( get_permalink() ) . '">続きを読む</a></p>';
+		endif;
 		?>
 	</div><!-- .entry-content -->
 

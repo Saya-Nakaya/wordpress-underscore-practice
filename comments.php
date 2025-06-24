@@ -28,10 +28,16 @@ if ( post_password_required() ) {
 
 		<ol class="comment-list">
 			<?php
+			// コメントの日時表示をカスタマイズ
+			add_filter('get_comment_date', function($date, $comment) {
+				return get_comment_time('Y/m/d H:i', false, true);
+			}, 10, 2);
+			
 			wp_list_comments(
 				array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					'callback'   => 'my_simple_comment_callback',
 				)
 			);
 			?>

@@ -81,7 +81,11 @@ get_header();
 
                     <!-- 記事本文（抜粋） -->
                     <div class="entry-content">
-                        <?php the_excerpt(); ?>
+                        <?php 
+                        // 文字数制限を適用
+                        echo '<p class="entry-excerpt">' . limit_post_content(get_the_content(), 100) . '</p>';
+                        echo '<p class="read-more"><a href="' . esc_url( get_permalink() ) . '">続きを読む</a></p>';
+                        ?>
                     </div>
                 </article>
             <?php
