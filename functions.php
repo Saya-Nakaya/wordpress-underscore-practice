@@ -190,24 +190,53 @@ add_action('wp_enqueue_scripts', 'my_enqueue_files');
 ###############
 */
 
-// コメントフォームのフィールドをカスタマイズ
-function my_remove_comment_logged_in_text($args) {
+// コメントフォームのカスタマイズ
+function my_customize_comment_form($args) {
+    // ログイン済みユーザーの表示テキストを削除
     $args['logged_in_as'] = '';
+    
+    // フォームのタイトルを変更
+    $args['title_reply'] = 'コメントを残す';
+    
+    // コメント本文フィールドをカスタマイズ
+    $args['comment_field'] = '<p class="comment-form-comment">
+        <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required" placeholder="コメントを入力してください *"></textarea>
+    </p>';
+
     return $args;
 }
-add_filter('comment_form_defaults', 'my_remove_comment_logged_in_text');
-
-function my_customize_comment_form_texts($args) {
-    $args['title_reply'] = 'コメントを残す'; // フォームのタイトル
-    $args['comment_field'] = '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>';
-    return $args;
+// コメントリストのカスタムコールバック関数
+function my_simple_comment_callback($comment, $args, $depth) {
+    // 1つのコメントをリストの中に入れる
+    ?>
+    <li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+        <div class="comment-body">
+            <div class="comment-meta">
+                <!-- コメントを書いた人の名前を表示する -->
+                <span class="comment-author">
+                    <?php echo esc_html(get_comment_author()); ?>
+                </span>
+                <!-- コメントを書いた日付と時間を表示する -->
+                <span class="comment-date">
+                    <?php echo get_comment_time('Y/m/d H:i'); ?>
+                </span>
+            </div>
+            <!-- コメントの内容を表示する -->
+            <div class="comment-content">
+                <?php comment_text(); ?>
+            </div>
+        </div>
+    </li>
+    <?php
 }
-add_filter('comment_form_defaults', 'my_customize_comment_form_texts');
 
-/**
- * 投稿内容の文字数制限関数
- * ホーム画面と検索画面で100文字に制限
- */
+add_filter('comment_form_defaults', 'my_customize_comment_form');
+
+/*
+##########################
+## 投稿内容の文字数制限関数 ##
+##########################
+*/
 function limit_post_content($content, $limit = 100) {
     // HTMLタグを除去してプレーンテキストに変換
     $plain_text = wp_strip_all_tags($content);
@@ -221,9 +250,11 @@ function limit_post_content($content, $limit = 100) {
     return $plain_text;
 }
 
-/**
- * ホーム画面と検索画面でのみ文字数制限を適用
- */
+/*
+########################################
+## ホーム画面と検索画面でのみ文字数制限を適用 ##
+########################################
+*/
 function custom_the_content($content) {
     // 単一投稿ページでは全文表示
     if (is_single()) {
@@ -261,17 +292,3 @@ function custom_modified_date_format($date) {
     return esc_html(get_the_modified_date('Y/m/d H:i'));
 }
 
-// コメントリストのカスタムコールバック関数
-function my_simple_comment_callback($comment, $args, $depth) {
-    ?>
-    <li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-        <div class="comment-body">
-            <div class="comment-meta">
-                <span class="comment-author"><?php echo esc_html(get_comment_author()); ?></span>
-                <span class="comment-date"><?php echo get_comment_time('Y/m/d H:i'); ?></span>
-            </div>
-            <div class="comment-content"><?php comment_text(); ?></div>
-        </div>
-    </li>
-    <?php
-}
