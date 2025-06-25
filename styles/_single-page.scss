@@ -6,7 +6,7 @@
     width: 100%;
     background-color: #fff;
     resize: none;
-    border-radius: 30px;
+    border-radius: 20px;
     padding: 24px;
 
     @media (max-width: 599px) {
@@ -72,6 +72,10 @@
             background-color: $color-secondary;
             color: #fff;
             text-decoration: none;
+        }
+
+        &:active {
+            background-color: $color-tertiary;
         }
     }
 

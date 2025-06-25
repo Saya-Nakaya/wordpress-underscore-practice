@@ -25,18 +25,8 @@
 }
 
 
-.search-submit {
-    background-color: $color-primary;
-    color: #fff;
-    border-radius: 24px;
+#wp-block-search__input-1, .search-submit {
     padding: 8px 16px;
-    border: none;
-    cursor: pointer;
-
-    &:hover {
-        background-color: $color-secondary;
-        color: #fff;
-    }
 }
 
 .search-field {

@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*
-#############
-## フォントサイズ
-#############
+################
+## フォントサイズ ##
+################
 */
 body {
   font-family: "Noto Sans JP", sans-serif;
@@ -45,10 +45,13 @@ a {
   color: #000000;
 }
 a:visited {
-  color: #3f42ff;
+  color: #007cba;
+}
+a:hover {
+  color: #005a87;
 }
 a:active {
-  color: #008120;
+  color: #6aaed6;
 }
 
 .site-header {
@@ -107,15 +110,6 @@ a:active {
   .menu-toggle {
     display: block;
     padding: 8px 16px;
-    background-color: #007cba;
-    color: #fff;
-    border-radius: 24px;
-    border: 1px solid #007cba;
-    cursor: pointer;
-  }
-  .menu-toggle:hover {
-    background-color: #005a87;
-    color: #fff;
   }
 }
 
@@ -143,17 +137,8 @@ a:active {
   width: 100%;
 }
 
-.search-submit {
-  background-color: #007cba;
-  color: #fff;
-  border-radius: 24px;
+#wp-block-search__input-1, .search-submit {
   padding: 8px 16px;
-  border: none;
-  cursor: pointer;
-}
-.search-submit:hover {
-  background-color: #005a87;
-  color: #fff;
 }
 
 .search-field {
@@ -173,7 +158,7 @@ a:active {
   align-items: flex-start;
   background-color: #fff;
   padding: 30px 40px;
-  border-radius: 30px;
+  border-radius: 20px;
 }
 .post:nth-child(1) {
   margin: 24px 0;
@@ -198,14 +183,14 @@ a:active {
   justify-content: center;
   align-items: center;
   padding: 24px 40px;
-  border-radius: 24px;
+  border-radius: 25px;
   max-width: 440px;
   width: 100%;
   margin: 0 auto;
 }
 @media (max-width: 599px) {
   .widget-area .widget-area-inner {
-    padding: 24px;
+    padding: 16px;
   }
 }
 .widget-area .widget_block {
@@ -271,9 +256,8 @@ a:active {
   background-color: #005a87;
   text-decoration: none;
 }
-.read-more a:focus {
-  outline: 2px solid #007cba;
-  outline-offset: 2px;
+.read-more a:active {
+  background-color: #6aaed6;
 }
 
 .entry-summary .entry-excerpt {
@@ -288,7 +272,7 @@ a:active {
   width: 100%;
   background-color: #fff;
   resize: none;
-  border-radius: 30px;
+  border-radius: 20px;
   padding: 24px;
 }
 @media (max-width: 599px) {
@@ -351,6 +335,9 @@ a:active {
   color: #fff;
   text-decoration: none;
 }
+.form-submit .submit:active {
+  background-color: #6aaed6;
+}
 @media (max-width: 599px) {
   .form-submit {
     justify-content: center;
@@ -395,18 +382,18 @@ a:active {
   }
 }
 
-.wp-block-search__button {
-  background-color: #007cba;
-  color: #fff;
-  border-radius: 24px;
+/*
+###################
+## フッター検索ボタン ##
+###################
+*/
+#wp-block-search__input-1 {
+  border-radius: 5px;
   padding: 12px 24px;
-  border: none;
-  cursor: pointer;
-  border: 1px solid #007cba;
 }
-.wp-block-search__button:hover {
-  background-color: #005a87;
-  color: #fff;
+
+.search-submit {
+  padding: 12px 24px;
 }
 
 .scroll-to-top {
@@ -450,7 +437,120 @@ a:active {
     width: 56px;
     height: 56px;
     font-size: 18px;
+    padding: 16px;
   }
+}
+
+/*
+#####################
+## お問い合わせフォーム ##
+#####################
+*/
+#form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#form .form-title {
+  font-size: 40px;
+  margin-top: 16px;
+}
+@media (max-width: 599px) {
+  #form .form-title {
+    font-size: 32px;
+    margin: 8px 0 12px;
+  }
+}
+#form .wpcf7-form-control {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #007cba;
+  background-color: #fff;
+  border-radius: 20px;
+  resize: none;
+}
+@media (max-width: 599px) {
+  #form .wpcf7-form-control {
+    padding: 12px;
+  }
+}
+#form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 0;
+}
+#form .wpcf7-submit {
+  max-width: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px auto;
+  background-color: #007cba;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 36px;
+  cursor: pointer;
+}
+#form .wpcf7-submit:hover {
+  background-color: #005a87;
+}
+#form .wpcf7-submit:active {
+  background-color: #6aaed6;
+}
+#form .wpcf7-spinner {
+  display: none;
+}
+#form .wpcf7-response-output {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: none;
+  margin: 0;
+  padding: 12px 0;
+}
+
+/*
+########################
+## 検索ボタンのスタイル ##
+########################
+*/
+button, input[type=button], input[type=reset], input[type=submit] {
+  background-color: #007cba;
+  color: #fff;
+  border-radius: 25px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border: 1px solid #007cba;
+}
+button:hover, input[type=button]:hover, input[type=reset]:hover, input[type=submit]:hover {
+  background-color: #005a87;
+  color: #fff;
+}
+button:active, input[type=button]:active, input[type=reset]:active, input[type=submit]:active {
+  background-color: #6aaed6;
+}
+
+/*
+########################
+## 検索欄のスタイル ##
+########################
+*/
+input[type=search] {
+  border-radius: 5px;
+  padding: 12px 24px;
+  border: 1px solid #007cba;
+}
+
+.page-content .search-form {
+  margin: 1.5em 0;
 }
 
 /*

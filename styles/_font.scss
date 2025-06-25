@@ -1,7 +1,9 @@
+@use "color" as *;
+
 /*
-#############
-## フォントサイズ
-#############
+################
+## フォントサイズ ##
+################
 */
 
 $font-family-base: "Noto Sans JP", sans-serif;
@@ -51,12 +53,16 @@ a {
 
     // 訪問済みのリンク
     &:visited {
-        color: #3f42ff;
+        color: $color-primary;
+    }
+
+    &:hover {
+        color: $color-secondary;
     }
 
     // クリックした時のリンク
     &:active {
-        color: #008120;
+        color: $color-tertiary;
     }
 }
 
