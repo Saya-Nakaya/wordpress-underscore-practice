@@ -51,6 +51,9 @@ get_header();
             // 固定ページでのページネーション用のクエリ変数取得
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             
+            // get_search_query()で検索フォームから送信された検索語を取得
+            $search_query = get_search_query();
+            
             // WP_Queryの引数を設定
             $args = array(
                 'post_type' => 'post',        // 投稿タイプを'post（投稿）'に設定
@@ -59,6 +62,12 @@ get_header();
                 'orderby' => 'date',          // 日付によって並び替え
                 'order' => 'DESC'             // 降順（新しい順）で表示
             );
+            
+            // 検索クエリがある場合は検索条件を追加
+            // 検索フォームから送信された検索語をWP_Queryの's'パラメータに設定
+            if (!empty($search_query)) {
+                $args['s'] = $search_query;
+            }
 
             // クエリを実行
             $query = new WP_Query($args);
@@ -97,15 +106,22 @@ get_header();
                 <!-- 
                     ##################################
                     ## 記事を複数のページに分けて表示する ##
-                    ################################
+                    ##################################
                 -->
                 <div class="pagination">
                     <?php
-                    paginate_links(array(
+                    // paginate_linksの使い方
+                    // 1. echoを忘れずにつける（出力するため）
+                    // 2. 'type' => 'plain'で横並びのページネーションに設定（デフォルトはページ番号のみ）
+                    // 3. 'total' => $query->max_num_pagesで総ページ数を指定
+                    // 4. 'current' => $pagedで現在のページを指定
+                    // 5. 'prev_text' => '前へ'と'next_text' => '次へ'でテキストを指定
+                    echo paginate_links(array(
                         'total' => $query->max_num_pages,    // 全ページ数
                         'current' => $paged,                 // 現在のページ
                         'prev_text' => '前へ',              // 前のページのテキスト
-                        'next_text' => '次へ'               // 次のページのテキスト
+                        'next_text' => '次へ',              // 次のページのテキスト
+                        'type' => 'plain'                    // 横並びのページネーション
                     ));
                     ?>
                 </div>
@@ -114,8 +130,12 @@ get_header();
                 // クエリをリセット
                 wp_reset_postdata();
             else :
-                // 記事が見つからない場合のメッセージ
-                echo '<p>記事が見つかりませんでした。</p>';
+                // 検索結果と通常表示でエラーメッセージを分ける
+                if (!empty($search_query)) {
+                    echo '<p>検索条件「' . esc_html($search_query) . '」に一致する記事が見つかりませんでした。</p>';
+                } else {
+                    echo '<p>記事が見つかりませんでした。</p>';
+                }
             endif;
             ?>
         </div>
