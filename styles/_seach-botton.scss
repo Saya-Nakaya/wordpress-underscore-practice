@@ -1,0 +1,52 @@
+@use "color" as *;
+@use "font" as *;
+@use "header" as *;
+@use "archive" as *;
+@use "main" as *;
+@use "single-page" as *;
+@use "footer" as *;
+@use "scroll-to-top" as *;
+@use "page-form" as *;
+
+/*
+########################
+## 検索ボタンのスタイル ##
+########################
+*/
+
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+    background-color: $color-primary;
+    color: #fff;
+    border-radius: 25px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border: 1px solid $color-primary;
+
+    &:hover {
+        background-color: $color-secondary;
+        color: #fff;
+    }
+
+    &:active {
+        background-color: $color-tertiary;
+    }
+}
+
+
+/*
+########################
+## 検索欄のスタイル ##
+########################
+*/
+
+input[type="search"] {
+    border-radius: 5px;
+    padding: 12px 24px;
+    border: 1px solid $color-primary;
+}
+
+// 検索なしの時に出る検索欄のスタイル
+.page-content .search-form {
+    margin: 1.5em 0;
+}

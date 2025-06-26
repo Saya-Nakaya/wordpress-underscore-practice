@@ -16,7 +16,7 @@
     align-items: flex-start;
     background-color: #fff;
     padding: 30px 40px;
-    border-radius: 30px;
+    border-radius: 20px;
 
 
     &:nth-child(1) {
@@ -44,7 +44,7 @@
         justify-content: center;
         align-items: center;
         padding: 24px 40px;
-        border-radius: 24px;
+        border-radius: 25px;
         max-width: 440px;
         width: 100%;
         margin: 0 auto;
@@ -52,7 +52,7 @@
 
     @media (max-width: 599px) {
         .widget-area-inner {
-            padding: 24px;
+            padding: 16px;
         }
     }
     
@@ -125,10 +125,9 @@
             background-color: $color-secondary;
             text-decoration: none;
         }
-        
-        &:focus {
-            outline: 2px solid $color-primary;
-            outline-offset: 2px;
+
+        &:active {
+            background-color: $color-tertiary;
         }
     }
 }

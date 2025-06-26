@@ -200,7 +200,7 @@ function my_customize_comment_form($args) {
     
     // コメント本文フィールドをカスタマイズ
     $args['comment_field'] = '<p class="comment-form-comment">
-        <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required" placeholder="コメントを入力してください *"></textarea>
+        <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required" placeholder="コメントを入力してください"></textarea>
     </p>';
 
     return $args;

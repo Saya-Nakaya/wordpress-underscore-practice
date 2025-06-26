@@ -1,6 +1,8 @@
 @use "color" as *;
 @use "font" as *;
 
+
+
 .scroll-to-top {
   position: fixed;
   bottom: 30px;
@@ -47,5 +49,6 @@
     width: 56px;
     height: 56px;
     font-size: 18px;
+    padding: 16px;
   }
 } 
