@@ -41,8 +41,12 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 12px;
         padding: 16px 0;
+
+        // 必須項目に*を表示
+        .required-asterisk {
+            color: red;
+        }
     }
 
 
@@ -82,4 +86,4 @@
         margin: 0;
         padding: 12px 0;
     }
-}
+}   
