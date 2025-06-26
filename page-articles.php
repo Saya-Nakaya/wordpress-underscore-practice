@@ -19,19 +19,19 @@ get_header();
         <h1><?php the_title(); ?></h1>
 
         <!-- 
-            ######################
-            ## 検索フォームセクション ##
-            ######################
+            ###############
+            ## 検索フォーム ##
+            ###############
         -->
         <div class="search-form-container">
             <!-- 
-            検索フォームの設定
-            - action: 検索した結果をどこに送るか（ウェブサイトのトップページに送る）
-            - method: 検索する言葉をどのように送るか（GETで送る）
-            - post_type: どんな種類の記事を探すか（ブログの記事だけを探す）
-            - input type="search"：ユーザーが探したい言葉を入力するためのフィールド
-            - input type="hidden"：見えない設定で、「記事だけを探す」という指示を送る
-            - button type="submit"：検索ボタンを押すと、検索結果が表示される
+                検索フォームの設定
+                - action: 検索した結果をどこに送るか（ウェブサイトのトップページに送る）
+                - method: 検索する言葉をどのように送るか（GETで送る）
+                - post_type: どんな種類の記事を探すか（ブログの記事だけを探す）
+                - input type="search"：ユーザーが探したい言葉を入力するためのフィールド
+                - input type="hidden"：見えない設定で、「記事だけを探す」という指示を送る
+                - button type="submit"：検索ボタンを押すと、検索結果が表示される
             -->
             <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
                 <input type="search" class="search-field" placeholder="記事を検索..." value="<?php echo get_search_query(); ?>" name="s" />
@@ -41,9 +41,9 @@ get_header();
         </div>
 
         <!-- 
-            ####################
-            ## 記事一覧セクション ##
-            ####################
+            #####################
+            ## 記事一覧（検索結果） ##
+            #####################
         -->
         <div class="articles-container">
             <!-- ここに記事のページネーション書く -->
@@ -66,8 +66,7 @@ get_header();
             // 記事がある場合の処理
             if ($query->have_posts()) :
                 // 記事のループ開始
-                while ($query->have_posts()) : $query->the_post();
-            ?>
+                while ($query->have_posts()) : $query->the_post(); ?>
                 <!-- 1つの記事を表示する部分 -->
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <!-- 記事の最初の部分（タイトルと日付を表示） -->
@@ -93,23 +92,25 @@ get_header();
                         ?>
                     </div>
                 </article>
-            <?php
-                endwhile;
+            <?php endwhile; ?>
+                
+                <!-- 
+                    ##################################
+                    ## 記事を複数のページに分けて表示する ##
+                    ##################################
+                -->
+                <div class="pagination">
+                    <?php
+                    paginate_links(array(
+                        'total' => $query->max_num_pages,    // 全ページ数
+                        'current' => $paged,                 // 現在のページ
+                        'prev_text' => '前へ',              // 前のページのテキスト
+                        'next_text' => '次へ'               // 次のページのテキスト
+                    ));
+                    ?>
+                </div>
 
-                /*
-                    ###################################
-                    ## 投稿記事側から移動できるページネーション ##
-                    ###################################
-                */
-                echo '<div class="pagination">';
-                echo paginate_links(array(
-                    'total' => $query->max_num_pages,    // 全ページ数
-                    'current' => $paged,                 // 現在のページ
-                    'prev_text' => '前へ',              // 前のページのテキスト
-                    'next_text' => '次へ'               // 次のページのテキスト
-                ));
-                echo '</div>';
-
+                <?php
                 // クエリをリセット
                 wp_reset_postdata();
             else :
