@@ -25,13 +25,13 @@ get_header();
         -->
         <div class="search-form-container">
             <!-- 
-            検索フォームの設定
-            - action: 検索した結果をどこに送るか（ウェブサイトのトップページに送る）
-            - method: 検索する言葉をどのように送るか（GETで送る）
-            - post_type: どんな種類の記事を探すか（ブログの記事だけを探す）
-            - input type="search"：ユーザーが探したい言葉を入力するためのフィールド
-            - input type="hidden"：見えない設定で、「記事だけを探す」という指示を送る
-            - button type="submit"：検索ボタンを押すと、検索結果が表示される
+                検索フォームの設定
+                - action: 検索した結果をどこに送るか（ウェブサイトのトップページに送る）
+                - method: 検索する言葉をどのように送るか（GETで送る）
+                - post_type: どんな種類の記事を探すか（ブログの記事だけを探す）
+                - input type="search"：ユーザーが探したい言葉を入力するためのフィールド
+                - input type="hidden"：見えない設定で、「記事だけを探す」という指示を送る
+                - button type="submit"：検索ボタンを押すと、検索結果が表示される
             -->
             <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
                 <input type="search" class="search-field" placeholder="記事を検索..." value="<?php echo get_search_query(); ?>" name="s" />
@@ -66,8 +66,7 @@ get_header();
             // 記事がある場合の処理
             if ($query->have_posts()) :
                 // 記事のループ開始
-                while ($query->have_posts()) : $query->the_post();
-            ?>
+                while ($query->have_posts()) : $query->the_post(); ?>
                 <!-- 1つの記事を表示する部分 -->
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <!-- 記事の最初の部分（タイトルと日付を表示） -->
@@ -110,6 +109,7 @@ get_header();
                 ));
                 echo '</div>';
 
+                <?php
                 // クエリをリセット
                 wp_reset_postdata();
             else :
