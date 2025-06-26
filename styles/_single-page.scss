@@ -1,3 +1,6 @@
+@use "color" as *;
+@use "font" as *;
+
 #comment{
     max-width: 475px;
     width: 100%;
@@ -91,6 +94,10 @@
     width: 100%;
     margin: 0 0 8px;
 
+    @media (max-width: 599px) {
+        margin: 0;
+    }
+
     .nav-next {
         display: flex;
         justify-content: center;
@@ -106,4 +113,8 @@
     align-items: flex-start;
     width: 100%;
     margin: 24px 0;
+
+    @media (max-width: 599px) {
+        margin: 8px 0;
+    }
 }

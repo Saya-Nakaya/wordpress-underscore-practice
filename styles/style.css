@@ -144,14 +144,15 @@ a:active {
 }
 
 .search-submit {
-  background-color: #fff;
+  background-color: #007cba;
+  color: #fff;
   border-radius: 24px;
-  padding: 12px 24px;
+  padding: 8px 16px;
   border: none;
   cursor: pointer;
 }
 .search-submit:hover {
-  background-color: #000;
+  background-color: #005a87;
   color: #fff;
 }
 
@@ -175,13 +176,16 @@ a:active {
   border-radius: 30px;
 }
 .post:nth-child(1) {
-  margin-top: 24px;
+  margin: 24px 0;
 }
 @media (max-width: 1023px) {
   .post {
     width: 100%;
     gap: 8px;
     padding: 24px;
+  }
+  .post:nth-child(1) {
+    margin: 24px 0;
   }
 }
 
@@ -366,6 +370,11 @@ a:active {
   width: 100%;
   margin: 0 0 8px;
 }
+@media (max-width: 599px) {
+  .site-main .post-navigation {
+    margin: 0;
+  }
+}
 .site-main .post-navigation .nav-next {
   display: flex;
   justify-content: center;
@@ -379,6 +388,11 @@ a:active {
   align-items: flex-start;
   width: 100%;
   margin: 24px 0;
+}
+@media (max-width: 599px) {
+  .comment-list {
+    margin: 8px 0;
+  }
 }
 
 .wp-block-search__button {
