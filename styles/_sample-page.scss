@@ -1,0 +1,138 @@
+@use "color" as *;
+@use "font" as *;
+
+/*
+    *********************
+    ** profile-common **
+    *********************
+ */
+.profile-container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+    .page-title {
+        font-size: $font-size-h1;
+        margin-bottom: 24px;
+
+        @media (max-width: 768px) {
+            font-size: $sp-font-h1;
+        }
+    }
+}
+
+/*
+    **********************
+    ** ページメインコンテンツ **
+    **********************
+ */
+.page-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    gap: 72px;
+    margin-bottom: 24px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    // 画像エリア
+    .image-item {
+        max-width: 400px;
+        width: 40%;
+
+        img {
+            border-radius: 50%;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+    }
+
+    // テキスト情報エリア
+    .text-item {
+        width: 60%;
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+    }
+
+    // 各情報項目の共通スタイル
+    .sample-name {
+        margin-bottom: 24px;
+
+        h2 {
+            font-size: $font-size-h2;
+            margin-bottom: 8px;
+
+            @media (max-width: 768px) {
+                font-size: $sp-font-h2;
+            }
+        }
+    }
+
+    // 基本情報セクション（名前、年齢、居住地）
+    .profile-basic-info {
+        margin-bottom: 24px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    // 詳細情報セクション（好きなこと、将来の夢、スキル）
+    .profile-details {
+        margin-bottom: 24px;
+    }
+
+    /*
+        ********************
+        ** SNSリンクセクション **
+        ********************
+    */ 
+    .social-links {
+        margin-top: 24px;
+        
+        h2 {
+            font-size: $font-size-h2;
+            margin-bottom: 12px;
+            
+            @media (max-width: 768px) {
+                font-size: $sp-font-h2;
+            }
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+
+            .social-link {
+                display: inline-block;
+                padding: 8px 16px;
+                background-color: $color-primary;
+                color: white;
+                text-decoration: none;
+                border-radius: 25px;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: $color-secondary;
+                    color: white;
+                }
+
+                &:active {
+                    background-color: $color-tertiary;
+                    color: white;
+                }
+            }
+        }
+    }
+}
