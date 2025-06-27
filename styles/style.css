@@ -120,12 +120,22 @@ a:active {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 24px 40px;
+  padding: 40px;
   margin: 0 auto;
 }
 @media (max-width: 1023px) {
   .site-main {
     padding: 24px;
+  }
+}
+
+.articles-title {
+  font-size: 40px;
+  margin-bottom: 24px;
+}
+@media (max-width: 768px) {
+  .articles-title {
+    font-size: 32px;
   }
 }
 
@@ -553,6 +563,129 @@ input[type=search] {
 
 .page-content .search-form {
   margin: 1.5em 0;
+}
+
+/*
+    *********************
+    ** profile-common **
+    *********************
+ */
+.profile-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.profile-container .page-title {
+  font-size: 40px;
+  margin-bottom: 24px;
+}
+@media (max-width: 768px) {
+  .profile-container .page-title {
+    font-size: 32px;
+  }
+}
+
+/*
+    **********************
+    ** ページメインコンテンツ **
+    **********************
+ */
+.page-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  gap: 72px;
+  margin-bottom: 24px;
+  /*
+      ********************
+      ** SNSリンクセクション **
+      ********************
+  */
+}
+@media (max-width: 768px) {
+  .page-content {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+.page-content .image-item {
+  max-width: 400px;
+  width: 40%;
+}
+.page-content .image-item img {
+  border-radius: 50%;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .page-content .image-item {
+    width: 100%;
+  }
+}
+.page-content .text-item {
+  width: 60%;
+}
+@media (max-width: 768px) {
+  .page-content .text-item {
+    width: 100%;
+  }
+}
+.page-content .sample-name {
+  margin-bottom: 24px;
+}
+.page-content .sample-name h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+@media (max-width: 768px) {
+  .page-content .sample-name h2 {
+    font-size: 16px;
+  }
+}
+.page-content .profile-basic-info {
+  margin-bottom: 24px;
+  border-bottom: 2px solid #f0f0f0;
+}
+.page-content .profile-details {
+  margin-bottom: 24px;
+}
+.page-content .social-links {
+  margin-top: 24px;
+}
+.page-content .social-links h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+@media (max-width: 768px) {
+  .page-content .social-links h2 {
+    font-size: 16px;
+  }
+}
+.page-content .social-links .social-icons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.page-content .social-links .social-icons .social-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007cba;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+.page-content .social-links .social-icons .social-link:hover {
+  background-color: #005a87;
+  color: white;
+}
+.page-content .social-links .social-icons .social-link:active {
+  background-color: #6aaed6;
+  color: white;
 }
 
 /*

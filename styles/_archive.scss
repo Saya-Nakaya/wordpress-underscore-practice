@@ -8,13 +8,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 24px 40px;
+    padding: 40px;
     margin: 0 auto;
 
     @media (max-width: 1023px) {
         padding: 24px;
-    }
+    } 
 }
+
+.articles-title {
+    font-size: $font-size-h1;
+    margin-bottom: 24px;
+
+    @media (max-width: 768px) {
+        font-size: $sp-font-h1;
+    }
+}  
 
 .articles-container {
     display: flex;
