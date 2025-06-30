@@ -292,3 +292,57 @@ function custom_modified_date_format($date) {
     return esc_html(get_the_modified_date('Y/m/d H:i'));
 }
 
+/*
+##########################
+## もっと見るボタン機能 ##
+##########################
+*/
+
+// ホーム画面でだけ、もっと見るボタンのJavaScriptを読み込む
+function enqueue_load_more_script() {
+    if (is_home() || is_front_page()) {
+        wp_enqueue_script('load-more-button', get_template_directory_uri() . '/js/load-more-button.js', array(), _S_VERSION, true);
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_load_more_script');
+
+// もっと見るボタンが押された時に、新しい記事を送り返す処理
+function load_more_posts() {
+    // 何ページ目が欲しいかを受け取る
+    $page = intval($_POST['page']);
+    // 何個の記事が欲しいかを受け取る
+    $posts_per_page = intval($_POST['posts_per_page']);
+    
+    // 記事を探す条件を決める
+    $args = array(
+        'post_type' => 'post', // 記事を探す
+        'posts_per_page' => $posts_per_page, // 何個の記事を取るか
+        'paged' => $page, // 何ページ目か
+        'post_status' => 'publish' // 公開されている記事だけ
+    );
+    
+    // 条件に合う記事を探す
+    $the_query = new WP_Query($args);
+    
+    // 記事が見つかった場合
+    if ($the_query->have_posts()) {
+        // 見つかった記事を1つずつ表示する
+        while ($the_query->have_posts()) {
+            $the_query->the_post();
+            // 記事のHTMLを作って表示
+            get_template_part('template-parts/content', get_post_format());
+        }
+    } else {
+        // もう記事がない場合は 'end' という文字を返す
+        echo 'end';
+    }
+    
+    // 記事の情報をリセットする
+    wp_reset_postdata();
+    // 処理を終了する
+    wp_die();
+}
+// ログインしている人としていない人、両方でこの機能を使えるようにする
+add_action('wp_ajax_load_more_posts', 'load_more_posts');
+add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
+

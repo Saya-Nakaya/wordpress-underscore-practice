@@ -17,20 +17,12 @@
     background-color: #fff;
     padding: 30px 40px;
     border-radius: 20px;
-
-
-    &:nth-child(1) {
-        margin: 24px 0;
-    }
-
+    
     @media (max-width: 1023px) {
         width: 100%;
         gap: 8px;
         padding: 24px;
 
-        &:nth-child(1) {
-            margin:24px 0
-        }
     }
 }
 

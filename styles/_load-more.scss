@@ -1,0 +1,31 @@
+.load-more-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.load-more-button {
+    align-self: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.posts-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 30px 40px;
+
+    @media (max-width: 1023px) {
+        width: 100%;
+        gap: 8px;
+        padding: 24px;
+    }
+}
+

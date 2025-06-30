@@ -170,17 +170,11 @@ a:active {
   padding: 30px 40px;
   border-radius: 20px;
 }
-.post:nth-child(1) {
-  margin: 24px 0;
-}
 @media (max-width: 1023px) {
   .post {
     width: 100%;
     gap: 8px;
     padding: 24px;
-  }
-  .post:nth-child(1) {
-    margin: 24px 0;
   }
 }
 
@@ -686,6 +680,38 @@ input[type=search] {
 .page-content .social-links .social-icons .social-link:active {
   background-color: #6aaed6;
   color: white;
+}
+
+.load-more-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.load-more-button {
+  align-self: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.posts-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 30px 40px;
+}
+@media (max-width: 1023px) {
+  .posts-container {
+    width: 100%;
+    gap: 8px;
+    padding: 24px;
+  }
 }
 
 /*
