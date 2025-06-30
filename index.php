@@ -18,37 +18,36 @@ get_header();
 	<main id="primary" class="site-main">
 
 		<?php
-		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
-
-			/* 投稿ループの開始 */
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * 投稿タイプ固有のコンテンツテンプレートを読み込みます。
-				 * 子テーマでこれを上書きしたい場合は、content-___.phpという名前のファイル
-				 * （___は投稿タイプ名）を作成すると、そちらが代わりに使用されます。
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
+		if ( is_home() && ! is_front_page() ) :
+			?>
+			<header>
+				<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+			</header>
+			<?php
 		endif;
 		?>
+
+		<div class="posts-container">
+			<?php
+			// 最初に3件だけ表示
+			$args = array(
+				'post_type' => 'post',
+				'posts_per_page' => 3,
+				'paged' => 1,
+			);
+			$the_query = new WP_Query($args);
+			if ($the_query->have_posts()):
+				while ($the_query->have_posts()): $the_query->the_post();
+					get_template_part('template-parts/content', get_post_format());
+				endwhile;
+			endif;
+			wp_reset_postdata();
+			?>
+		</div>
+
+		<div class="load-more-container">
+			<button id="load-more" class="load-more-button">もっと見る</button>
+		</div>
 
 	</main><!-- #main -->
 

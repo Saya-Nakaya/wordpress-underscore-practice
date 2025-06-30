@@ -16,8 +16,7 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-        <h1><?php the_title(); ?></h1>
-
+        <h1 class="articles-title"><?php the_title(); ?></h1>
         <!-- 
             ###############
             ## 検索フォーム ##
@@ -140,6 +139,5 @@ get_header();
             ?>
         </div>
 	</main><!-- #main -->
-
 <?php
 get_footer();
